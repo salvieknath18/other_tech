@@ -1,0 +1,212 @@
+mark down- HTML link
+https://markdown-it.github.io/
+
+Conda base environment
+conda config --show | grep auto_activate_base
+conda config --set auto_activate_base False
+source ~/.bashrc
+conda activate commnad to activate base environment
+
+pip3 install ipython
+
+IPython provides information of any object by putting ‘?’ in front of it. 
+It includes docstring, function definitions and constructor details of class
+
+IPython’s in-built magic functions are extremely powerful. There are two types of magic functions.
+Line magics, which work very much like DOS commands.
+Cell magics, which work on multiple lines of code.
+Use of ? and ?? provides specific and more detailed information about the object
+In [1]: var?
+
+You can use run command in the input prompt to run a Python script. 
+The run command is actually line magic command and should actually be written as %run. 
+However, the %automagic mode is always on by default, so you can omit this.
+In [1]: run hello.py
+Hello IPython
+
+IPython also provides edit magic command. It invokes default editor of the operating system. 
+You can open it through Windows Notepad editor and the script can be edited. 
+Once you close it after saving its input, the output of modified script will be displayed.
+In [2]: edit hello.py
+Editing... done. Executing edited code...
+Hello IPython
+welcome to interactive computing
+
+The history magic command shows previous commands in current session
+
+If the statement in the input cell starts with the exclamation symbol (!), 
+it is treated as a system command for underlying operating system. 
+For example, !ls (for linux) and !dir (for windows) displays the contents of current directory
+In [1]:!date  or var = !date
+In [1]:my_var = "Python"
+In [2]:!echo "I love {my_var}"
+In [2]:!echo $my_var
+
+C:\python36> ipython [subcommand] [options] [-c cmd | -m mod | file] [--] [arg]
+Subcommands and Parameters
+An IPython command accepts the following subcommand options −
+Profile − Create and manage IPython profiles.
+Kernel − Start a kernel without an attached frontend.
+Locate − Print the path to the IPython dir.
+History − Manage the IPython history database.
+An IPython profile subcommand accepts the following parameters −
+ipython profile create myprofile − Creates a new profile.
+ipython profile list − Lists all available profiles.
+ipython locate profile myprofile − Locates required profile.
+
+Some of the other important command line options of IPython
+1 --automagic
+Turn on the auto calling of magic commands.
+2 --pdb
+Enable auto calling the pdb debugger after every exception.
+3 --pylab
+Pre-load matplotlib and numpy for interactive use with the default matplotlib backend.
+4 --matplotlib
+Configure matplotlib for interactive use with the default matplotlib backend.
+5 --gui=options
+Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk2','gtk3', 'osx', 'pyglet', 'qt', 'qt4', 'qt5', 'tk', 'wx', 'gtk2', 'qt4').
+
+The sample usage of some of the IPython command line options
+1 ipython --matplotlib
+enable matplotlib integration
+2 ipython --matplotlib=qt
+enable matplotlib integration with qt4 backend
+3 ipython --profile=myprofile
+start with profile foo
+4 ipython profile create myprofile
+create profile foo w/ default config files
+5 ipython help profile
+show the help for the profile subcmd
+6 ipython locate
+print the path to the IPython directory
+7 ipython locate profile myprofile
+print the path to the directory for profile `myprofile`
+
+
+In IPython, inputs are retrieved using up arrow key. 
+Besides, all previous inputs are saved and can be retrieved. 
+The variables _i, __i, and ___i always store the previous three input entries. 
+In addition, In and _in variables provides lists of all inputs. 
+Obviously _in[n] retrieves input from nth input cell
+Similarly, single, double and triple underscores act as variables to store previous three outputs. 
+Also Out and _oh form a dictionary object of cell number and 
+output of cells performing action (not including assignment statements). 
+To retrieve contents of specific output cell, use Out[n] or _oh[n].
+
+
+Line Magics
+They are similar to command line calls. They start with % character. 
+Rest of the line is its argument passed without parentheses or quotes. 
+Line magics can be used as expression and their return value can be assigned to variable.
+%cd, %pwd
+The %cd command can be used in the following ways −
+%cd <dir> − Changes current working directory to <dir>
+%cd.. − Changes current directory to parent directory
+%cd − changes to last visited directory.
+The %env command can be used in the following ways −
+%env − Lists all environment variables
+%env var − Gets value for var
+%env var val − Sets value for var
+%lsmagic : Displays all magic functions currently available
+%matplotlib
+In [4]: %matplotlib --list
+Available matplotlib backends: 
+['osx', 'qt4', 'qt5', 'gtk3', 'notebook', 'wx', 'qt', 'nbagg','gtk', 'tk', 'inline']
+
+Cell Magics
+They have %% character prefix. Unlike line magic functions, 
+they can operate on multiple lines below their call. 
+They can in fact make arbitrary modifications to the input they receive, 
+which need not even be a valid Python code at all. They receive the whole block as a single string.
+
+Files Tab
+The "Files" tab displays files and folders under current directory from which notebook app was invoked. The row corresponding to a notebook which is currently open and the running status is shown just beside the last modified column. It also displays Upload button using which a file can be uploaded to notebook server.
+
+Running Tab
+The "Running" tab shows which of the notebooks are currently running.
+
+Cluster Tab
+The third tab, "Clusters", is provided by IPython parallel. IPython's parallel computing framework, an extended version of the IPython kernel.
+
+Code Cells
+Contents in this cell are treated as statements in a programming language of current kernel. Default kernel is Python. So, we can write Python statements in a code cell. When such cell is run, its result is displayed in an output cell. The output may be text, image, matplotlib plots or HTML tables. Code cells have rich text capability.
+
+Markdown Cells
+These cells contain text formatted using markdown language. All kinds of formatting features are available like making text bold and italic, displaying ordered or unordered list, rendering tabular contents etc. Markdown cells are especially useful to provide documentation to the computational process of the notebook.
+
+Raw Cells
+Contents in raw cells are not evaluated by notebook kernel. When passed through nbconvert, they will be rendered as desired. If you type LatEx in a raw cell, rendering will happen after nbconvert is applied.
+
+	
+Jupyter Notebooks have two different keyboard input modes −
+Command Mode − Binds the keyboard to notebook level actions. Indicated by a grey cell border with a blue left margin.
+Edit Mode − When you are typing in a cell. Indicated by a green cell border.
+	
+***********************************************************************************************
+Markdown Cell
+
+Header cell
+A markdown cell can display header text of 6 sizes, similar to HTML headers. Start the text in markdown cell by # symbol. Use as many # symbols corresponding to level of header you want. It means single # will render biggest header line, and six # symbols renders header of smallest font size. The rendering will take place when you run the cell either from cell menu or run button of toolbar.
+
+To render a numbered list as is done by <ol> tag of HTML, the First item in the list should be numbered as 1. Subsequent items may be given any number. It will be rendered serially when the markdown cell is run. To show an indented list, press tab key and start first item in each sublist with 1.
+
+Bullet lists
+Each item in the list will display a solid circle if it starts with – symbol where as solid square symbol will be displayed if list starts with * symbol. The following example explains this feature −
+
+Markdown text starting with http or https automatically renders hyperlink. To attach link to text, place text in square brackets [] and link in parentheses () optionally including hovering text. Following screenshot will explain this.
+
+Bold and Italics
+To show a text in bold face, put it in between double underscores or two asterisks. To show in italics, put it between single underscores or single asterisks.
+
+To display image in a markdown cell, choose ‘Insert image’ option from Edit menu and browse to desired image file
+
+Table
+In a markdown cell, a table can be constructed using | (pipe symbol) and – (dash) to mark columns and rows. Note that the symbols need not be exactly aligned while typing. It should only take respective place of column borders and row border. Notebook will automatically resize according to content
+
+**********************************************************************************************
+cell magic functions and their functionalities.
+%%html
+<write html syntax>
+
+%%js or %%javascript
+write js syntax
+
+%%writefile
+Contents of code cell are written to a file using this command.
+
+IPython kernel of Jupyter notebook is able to display plots of code in input cells. It works seamlessly with matplotlib library. The inline option with the %matplotlib magic function renders the plot out cell even if show() function of plot object is not called. The show() function causes the figure to be displayed below in[] cell without out[] with number.
+
+
+*************************************************************************************************
+
+Jupyter notebook files have .ipynb extension.it can be exported to various file formats by using download as an option in the file menu
+jupyter nbconvert mynotebook.ipynb
+jupyter nbconvert --to html --template basic mynotebook.ipynb
+jupyter nbconvert --to latex –template report mynotebook.ipynb
+jupyter nbconvert mynotebook.ipynb --to pdf
+Notebook can be exported to HTML slideshow. The conversion uses Reveal.js in the background. To serve the slides by an HTTP server, add --postserve on the command-line. To make slides that does not require an internet connection, just place the Reveal.js library in the same directory where your_talk.slides.html is located.
+
+**********************************************************************************************
+IPyWidgets is a Python library of HTML interactive widgets for Jupyter notebook. Each UI element in the library can respond to events and invokes specified event handler functions. They enhance the interactive feature of Jupyter notebook application.
+Text input
+The widgets.text() function renders widgets in the notebook. It is similar to text box form element in HTML. The object of this widget has on_submit() method which listens to activity of the text field and can invoke event handler given as an argument to it.
+
+Button
+This widget is similar to HTML button. When it is clicked, the event is registered by on_click() method which calls the click event handler.
+
+IntSlider
+A slider control which displays the incrementing integer values. There is also a FloatSlider and IntRangeSlider (changing integer between a range)
+
+Label
+This widget is useful to display non editable text in the notebook.
+
+display()
+This function from ipywidgets module renders the widget object in notebook’s input cell.
+
+Interact
+This function automatically renders a widget depending upon type of data argument given to it. First argument to this function is the event handler and second is a value passed to event handler itself.
+
+
+jupyter nbconvert myslides.ipynb --to slides --post serve
+				 --to markdown
+				 --to rst
